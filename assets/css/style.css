@@ -1,0 +1,164 @@
+@import url(./responsive.css);
+
+
+
+/* =====  Root Variable  ===== */
+
+:root {
+  --white-color: #fff;
+  --sidebar-bg-color: #f8faff;
+  --black-color: #000;
+  --bg-color: #dbe6fc;
+  --text-color: #B9C0DE;
+  --red-color: #FF1010;
+  --nav-color: #1657FF;
+}
+
+
+
+/* =====  SF Font Family  ===== */
+
+
+@font-face {
+  font-family: "sf-light";
+  src: url(../fonts/sf/sf-light.otf);
+}
+
+@font-face {
+  font-family: "sf-regular";
+  src: url(../fonts/sf/sf-regular.otf);
+}
+
+@font-face {
+  font-family: "sf-medium";
+  src: url(../fonts/sf/sf-medium.otf);
+}
+
+@font-face {
+  font-family: "sf-semiBold";
+  src: url(../fonts/sf/sf-semibold.otf);
+}
+
+@font-face {
+  font-family: "sf-bold";
+  src: url(../fonts/sf/sf-bold.otf);
+}
+
+body {
+  font-family: "sf-regular";
+}
+
+.main {
+  background-color: var(--bg-color);
+}
+
+
+/*=====  Start Sidebar Section  =====*/
+
+.menuBar {
+  background-color: transparent;
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #3c3f88;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg-color);
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.activeMenu {
+  display: block;
+}
+
+nav div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+
+nav div:hover {
+  border-right: 5px solid var(--nav-color);
+}
+
+nav div:hover>p {
+  color: #1657FF;
+}
+
+nav p {
+  margin-bottom: 0;
+  color: var(--text-color);
+  font-size: 15px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+nav p:hover {
+  color: var(--nav-color);
+}
+
+nav img {
+  cursor: pointer;
+}
+
+.live {
+  font-family: "sf-semiBold";
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  color: var(--white-color);
+  background-color: var(--red-color);
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+.upgrade-btn {
+  transition: all 0.3s;
+}
+
+.upgrade-btn:hover {
+  background-color: #103aa5;
+}
+
+/*=====  End Sidebar Section  =====*/
+
+
+
+/*=====  Start Notification Section  =====*/
+
+.imgPickerDP {
+  width: -webkit-fill-available;
+}
+
+/*=====  End Notification Section  =====*/
+
+
+
+/* =====  Start Scrollbar Section  ===== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #dbe6fc;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4d7ffe;
+  border-radius: 50px;
+  height: 80px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #103aa5;
+}
+
+/* =====  End Scrollbar Section  ===== */

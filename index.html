@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennis</title>
+
+  <!-- =====  Tailwind JS  ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- =====  Custom CSS  ===== -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- =====  Font Awesome CSS  ===== -->
+  <link rel="stylesheet" href="assets/fonts/font-awesome/all.min.css">
+
+</head>
+
+<body>
+
+
+  <div class="main flex">
+
+
+    <!-- =====  Start Sidebar Section  ===== -->
+
+    <div class="menuBar md:hidden" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </div>
+
+    <div class="sidebar w-70 md:w-75 fixed md:static md:block hidden top-0 left-0 bottom-0 overflow-auto">
+
+      <div
+        class="flex items-center gap-[85px] md:gap-[100px] text-[25px] pt-[25px] md:pt-[40px] pl-[25px] md:pl-[40px]">
+        <a href="index.html"><img src="assets/images/logo.svg" alt="Logo Image"></a>
+
+        <div class="cancelIcon block md:hidden" onclick="toggleMenu()">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+
+      <nav class="pl-[25px] md:pl-[40px] mt-[40px] md:mt-[60px] mb-[70px] md:mb-[90px]">
+        <div class="mb-[30px] md:mb-[45px]">
+          <img src="assets/images/games-icon.svg" alt="Game Icon">
+          <p class="nav-items">All Games</p>
+        </div>
+        <div class="mb-[30px] md:mb-[45px]">
+          <img src="assets/images/live-icon.svg" alt="Live Icon">
+          <p class="nav-items">Live Games</p>
+          <span class="live">LIVE</span>
+        </div>
+        <div class="mb-[30px] md:mb-[45px]">
+          <img src="assets/images/score-icon.svg" style="height: 20px;" alt="Score Icon">
+          <p class="nav-items">Score</p>
+        </div>
+        <div class="mb-[30px] md:mb-[45px]">
+          <img src="assets/images/categories-icon.svg" alt="Categories Icon">
+          <p class="nav-items">Categories</p>
+        </div>
+        <div class="mb-[30px] md:mb-[45px]">
+          <img src="assets/images/video-icon.svg" alt="Video Icon">
+          <p class="nav-items">Video</p>
+        </div>
+        <div>
+          <img src="assets/images/statistic-icon.svg" alt="Statistic Icon">
+          <p class="nav-items">Statistic</p>
+        </div>
+      </nav>
+
+      <div class="upgrade bg-[#EBEEFF] rounded-[30px] mx-[25px] px-[10px] py-[15px] mb-[25px]">
+        <img src="assets/images/lock-img.svg" class="mt-[-62px] ml-[10px] md:ml-[10px]" alt="Lock Image">
+        <div>
+          <p class="font-[sf-light] text-[15px] text-center mt-[6px] text-[#1B0031]">Upgrade to <span
+              class="font-[sf-bold] text-[#1657ff]">PRO</span> for <br> more features.</p>
+          <button
+            class="mt-[15px] bg-[#1657FF] py-[15px] px-[75px] md:px-[85px] rounded-[15px] text-[white] text-[15px] font-[sf-medium] cursor-pointer upgrade-btn">Upgrade</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =====  End Sidebar Section  ===== -->
+
+
+
+    <!-- =====  Start Notification Section  ===== -->
+
+    <div
+      class="mt-[85px] md:mt-[50px] ml-[25px] md:ml-[40px] mr-[25px] md:mr-[45px] flex-1 justify-between items-start main-content">
+      <div class="flex justify-between items-center notification-main">
+        <div class="flex gap-[20px] items-center">
+          <img src="assets/images/arrow-left.svg" class="cursor-pointer" alt="Left Arrow">
+          <p class="text-[30px] md:text-[25px] lg:text-[30px] font-[sf-semibold] text-[#3C3F88]">Live Scores</p>
+        </div>
+        <div class="flex gap-[20px]">
+          <img src="assets/images/search-icon.svg" class="cursor-pointer" alt="Search Icon">
+          <img src="assets/images/settings-icon.svg" class="cursor-pointer" alt="Settings Icon">
+          <img src="assets/images/notification-icon.svg" class="cursor-pointer" alt="Notification Icon">
+          <div class="h-[30px] w-[30px] rounded-[5px] bg-[#d9c8ff] overflow-hidden">
+            <label for="imagePick" class="block h-full w-full cursor-pointer">
+              <img src="assets/images/girl-4.svg" class="h-full w-auto object-cover cursor-pointer imgPickerDP"
+                alt="Girl Image">
+            </label>
+            <input type="file" id="imagePick" class="hidden imagePickerInput" accept="image/*">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====  End Notification Section  ===== -->
+
+  </div>
+
+
+
+
+  <!-- =====  Font Awesome JS  ===== -->
+  <script src="assets/fonts/font-awesome/all.min.js"></script>
+
+
+
+  <!-- =====  Custom JS  ===== -->
+  <script src="assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>
