@@ -2,6 +2,7 @@
 
 
 
+
 /* =====  Root Variable  ===== */
 
 :root {
@@ -57,7 +58,7 @@ body {
 
 .menuBar {
   background-color: transparent;
-  position: fixed;
+  position: absolute;
   top: 25px;
   left: 25px;
   font-size: 25px;
@@ -67,6 +68,7 @@ body {
 
 .sidebar {
   background-color: var(--sidebar-bg-color);
+  z-index: 10000;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -81,15 +83,43 @@ nav div {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.2s;
+  transition: all 0.1s;
+  cursor: pointer;
+  padding: 16px 0px 16px 18px;
+}
+
+.activeDiv {
+  border-right: 5px solid var(--nav-color);
+  background-color: #E9EFFF;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.activeDiv svg {
+  fill: #1657FF;
+}
+
+.activeDiv p {
+  color: #1657FF;
 }
 
 nav div:hover {
   border-right: 5px solid var(--nav-color);
+  background-color: #E9EFFF;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+nav div:hover>svg {
+  fill: #1657FF;
 }
 
 nav div:hover>p {
   color: #1657FF;
+}
+
+nav div svg {
+  transition: all 0.3s;
 }
 
 nav p {
@@ -97,7 +127,6 @@ nav p {
   color: var(--text-color);
   font-size: 15px;
   letter-spacing: 1px;
-  cursor: pointer;
   transition: all 0.3s;
 }
 
@@ -133,11 +162,71 @@ nav img {
 
 /*=====  Start Notification Section  =====*/
 
+.activeSearch {
+  display: none;
+}
+
 .imgPickerDP {
   width: -webkit-fill-available;
 }
 
 /*=====  End Notification Section  =====*/
+
+
+
+/*=====  Start Statistic Section  =====*/
+
+#chartContainer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+#chartCenterTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  z-index: 10;
+}
+
+#chartCenterPercent {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #a0b0d0;
+  z-index: 10;
+}
+
+.legend {
+  margin-top: 13px;
+  display: flex;
+  gap: 35px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.color-box {
+  width: 10px;
+  height: 10px;
+}
+
+.match-inside-div {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/*=====  End Statistic Section  =====*/
 
 
 
@@ -152,13 +241,13 @@ nav img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4d7ffe;
+  background-color: #534aa4;
   border-radius: 50px;
   height: 80px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #103aa5;
+  background-color: #332a7c;
 }
 
 /* =====  End Scrollbar Section  ===== */

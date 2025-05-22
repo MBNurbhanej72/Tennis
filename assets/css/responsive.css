@@ -18,12 +18,28 @@
 
 @media only screen and (max-width: 768px) {
 
+  .activeSearch {
+    display: none !important;
+  }
+
+  .searchImg {
+    display: block !important;
+  }
 
   /*?  768px to 992px   md  ?*/
 }
 
 @media only screen and (max-width: 576px) {
 
+  .match-profile {
+    flex-direction: column;
+  }
+
+  .match-inside-div {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
 
   /*?  B - 576px to 768px   sm  ?*/
 }

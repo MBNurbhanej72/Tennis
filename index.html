@@ -16,6 +16,13 @@
   <!-- =====  Font Awesome CSS  ===== -->
   <link rel="stylesheet" href="assets/fonts/font-awesome/all.min.css">
 
+  <!-- =====  Chart JS  ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- =====  Tab JS  ===== -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- =====  Favicon Links  ===== -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/Favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/Favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/Favicon/favicon-16x16.png">
@@ -26,52 +33,93 @@
 <body>
 
 
-  <div class="main flex">
+
+  <div class="main grid lg:grid-cols-[auto_1fr]">
+
 
 
     <!-- =====  Start Sidebar Section  ===== -->
 
-    <div class="menuBar md:hidden" onclick="toggleMenu()">
+    <div class="menuBar lg:hidden" onclick="toggleMenu()">
       <i class="fa-solid fa-bars-staggered"></i>
     </div>
 
-    <div class="sidebar w-70 md:w-75 fixed md:static md:block hidden top-0 left-0 bottom-0 overflow-auto">
-
-      <div
-        class="flex items-center gap-[85px] md:gap-[100px] text-[25px] pt-[25px] md:pt-[40px] pl-[25px] md:pl-[40px]">
-        <a href="index.html"><img src="assets/images/logo.svg" alt="Logo Image"></a>
-
-        <div class="cancelIcon block md:hidden" onclick="toggleMenu()">
+    <aside
+      class="sidebar w-[250px] md:w-[280px] fixed lg:static top-0 left-0 bottom-0 overflow-auto bg-white z-50 hidden lg:block">
+      <div class="relative text-[25px] pt-[40px] pl-[40px]">
+        <a href="index.html"><img src="assets/images/logo.svg" alt="Logo"></a>
+        <div class="cancelIcon absolute top-[40px] right-[25px] lg:hidden" onclick="toggleMenu()">
           <i class="fa-solid fa-xmark"></i>
         </div>
       </div>
 
-      <nav class="pl-[25px] md:pl-[40px] mt-[40px] md:mt-[60px] mb-[70px] md:mb-[90px]">
-        <div class="mb-[30px] md:mb-[45px]">
-          <img src="assets/images/games-icon.svg" alt="Game Icon">
-          <p class="nav-items">All Games</p>
-        </div>
-        <div class="mb-[30px] md:mb-[45px]">
-          <img src="assets/images/live-icon.svg" alt="Live Icon">
-          <p class="nav-items">Live Games</p>
-          <span class="live">LIVE</span>
-        </div>
-        <div class="mb-[30px] md:mb-[45px]">
-          <img src="assets/images/score-icon.svg" style="height: 20px;" alt="Score Icon">
-          <p class="nav-items">Score</p>
-        </div>
-        <div class="mb-[30px] md:mb-[45px]">
-          <img src="assets/images/categories-icon.svg" alt="Categories Icon">
-          <p class="nav-items">Categories</p>
-        </div>
-        <div class="mb-[30px] md:mb-[45px]">
-          <img src="assets/images/video-icon.svg" alt="Video Icon">
-          <p class="nav-items">Video</p>
-        </div>
-        <div>
-          <img src="assets/images/statistic-icon.svg" alt="Statistic Icon">
-          <p class="nav-items">Statistic</p>
-        </div>
+      <nav class="pl-[15px] md:pl-[22px] mt-[40px] md:mt-[60px] mb-[70px] md:mb-[90px]">
+        <a href="index.html">
+          <div class="mb-[5px] md:mb-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B9C0DE"
+              class="nav-img">
+              <path
+                d="M384-144H216q-29.7 0-50.85-21.15Q144-186.3 144-216v-168q40-2 68-29.5t28-66.5q0-39-28-66.5T144-576v-168q0-29.7 21.15-50.85Q186.3-816 216-816h168q0-40 27.77-68 27.78-28 68-28Q520-912 548-884.16q28 27.84 28 68.16h168q29.7 0 50.85 21.15Q816-773.7 816-744v168q40 0 68 27.77 28 27.78 28 68Q912-440 884.16-412q-27.84 28-68.16 28v168q0 29.7-21.15 50.85Q773.7-144 744-144H576q-2-40-29.38-68t-66.5-28q-39.12 0-66.62 28-27.5 28-29.5 68Zm-168-72h112q20-45 61.5-70.5T480-312q49 0 90.5 25.5T632-216h112v-240h72q9.6 0 16.8-7.2 7.2-7.2 7.2-16.8 0-9.6-7.2-16.8-7.2-7.2-16.8-7.2h-72v-240H504v-72q0-9.6-7.2-16.8-7.2-7.2-16.8-7.2-9.6 0-16.8 7.2-7.2 7.2-7.2 16.8v72H216v112q45 20 70.5 61.5T312-480q0 50.21-25.5 91.6Q261-347 216-328v112Zm264-264Z" />
+            </svg>
+            <p class="nav-items">All Games</p>
+          </div>
+        </a>
+
+        <a href="index.html">
+          <div class="mb-[5px] md:mb-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B9C0DE"
+              class="nav-img">
+              <path
+                d="M208-273q-54-54-83-123.89-29-69.88-29-147 0-77.11 28.95-147.1T208-816l52 51q-45 44-68.5 101.15Q168-606.7 168-544.35t23.5 118.85Q215-369 259-324l-51 51Zm104-103q-34-34-53-77.2-19-43.19-19-90.8t19-90.8q19-43.2 53-77.2l51 51q-23 23-37 53.3-14 30.29-14 63.5 0 33.2 14 63.7t37 53.5l-51 51Zm132 264v-344q-27-11.46-43.5-35.34-16.5-23.88-16.5-52.54Q384-584 411.77-612q27.78-28 68-28Q520-640 548-612.13q28 27.87 28 68.24 0 28.83-16.5 52.86T516-456v344h-72Zm204-264-51-51q23-23 36.5-53.3 13.5-30.29 13.5-63.5 0-33.2-13.5-63.7T597-661l51-51q34 34 52.5 77.2Q719-591.61 719-544t-18.5 90.8Q682-410 648-376Zm103 103-51-51q45-44 68.5-100.5T792-544q0-63-23.5-119.5T701-765l51-51q54.1 54.95 83.05 124.85Q864-621.25 864-544.13 864-467 835-397t-84 124Z" />
+            </svg>
+            <p class="nav-items">Live Games</p>
+            <span class="live">LIVE</span>
+          </div>
+        </a>
+
+        <a href="index.html">
+          <div class="mb-[5px] md:mb-[15px] activeDiv">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B9C0DE"
+              class="nav-img">
+              <path
+                d="M600-384q-10.2 0-17.1-6.9-6.9-6.9-6.9-17.1v-144q0-10.2 6.9-17.1 6.9-6.9 17.1-6.9h96q10.2 0 17.1 6.9 6.9 6.9 6.9 17.1v144q0 10.2-6.9 17.1-6.9 6.9-17.1 6.9h-96Zm24-48h48v-96h-48v96Zm-384 48v-96q0-10.2 6.9-17.1 6.9-6.9 17.1-6.9h72v-24h-96v-48h120q10.2 0 17.1 6.9 6.9 6.9 6.9 17.1v72q0 10.2-6.9 17.1-6.9 6.9-17.1 6.9h-72v24h96v48H240Zm216-136v-48h48v48h-48Zm0 128v-48h48v48h-48ZM168-192q-29 0-50.5-21.5T96-264v-432q0-29 21.5-50.5T168-768h120v-72h72v72h240v-72h72v72h120q29.7 0 50.85 21.5Q864-725 864-696v432q0 29-21.15 50.5T792-192H168Zm0-72h288v-48h48v48h288v-432H504v48h-48v-48H168v432Zm0 0v-432 432Z" />
+            </svg>
+            <p class="nav-items">Score</p>
+          </div>
+        </a>
+
+        <a href="index.html">
+          <div class="mb-[5px] md:mb-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B9C0DE"
+              class="nav-img">
+              <path
+                d="m276-528 204-336 204 336H276ZM696-96q-70 0-119-49t-49-119q0-70 49-119t119-49q70 0 119 49t49 119q0 70-49 119T696-96Zm-552-24v-288h288v288H144Zm551.77-48Q736-168 764-195.77q28-27.78 28-68Q792-304 764.23-332q-27.78-28-68-28Q656-360 628-332.23q-28 27.78-28 68Q600-224 627.77-196q27.78 28 68 28ZM216-192h144v-144H216v144Zm188-408h152l-76-125-76 125Zm76 0ZM360-336Zm331 67Z" />
+            </svg>
+            <p class="nav-items">Categories</p>
+          </div>
+        </a>
+
+        <a href="index.html">
+          <div class="mb-[5px] md:mb-[15px]">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B9C0DE"
+              class="nav-img">
+              <path
+                d="M216-192q-29 0-50.5-21.5T144-264v-432q0-29.7 21.5-50.85Q187-768 216-768h432q29.7 0 50.85 21.15Q720-725.7 720-696v168l144-144v384L720-432v168q0 29-21.15 50.5T648-192H216Zm0-72h432v-432H216v432Zm0 0v-432 432Z" />
+            </svg>
+            <p class="nav-items">Video</p>
+          </div>
+        </a>
+
+        <a href="index.html">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#B9C0DE"
+              class="nav-img">
+              <path
+                d="M362-192q-19 0-34-11t-22-28l-86-213H48v-72h221l93 232 180-446q7-16.56 22-27.28Q579-768 598-768t34 11q15 11 22 28l86 213h172v72H692l-94-232-180 446q-7 16.56-22 27.28Q381-192 362-192Z" />
+            </svg>
+            <p class="nav-items">Statistic</p>
+          </div>
+        </a>
       </nav>
 
       <div class="upgrade bg-[#EBEEFF] rounded-[30px] mx-[25px] px-[10px] py-[15px] mb-[25px]">
@@ -80,44 +128,489 @@
           <p class="font-[sf-light] text-[15px] text-center mt-[6px] text-[#1B0031]">Upgrade to <span
               class="font-[sf-bold] text-[#1657ff]">PRO</span> for <br> more features.</p>
           <button
-            class="mt-[15px] bg-[#1657FF] py-[15px] px-[75px] md:px-[85px] rounded-[15px] text-[white] text-[15px] font-[sf-medium] cursor-pointer upgrade-btn">Upgrade</button>
+            class="mt-[15px] bg-[#1657FF] py-[15px] px-[61px] md:px-[76.5px] rounded-[15px] text-[white] text-[15px] font-[sf-medium] cursor-pointer upgrade-btn">Upgrade</button>
         </div>
       </div>
-
-    </div>
+    </aside>
 
     <!-- =====  End Sidebar Section  ===== -->
 
 
 
-    <!-- =====  Start Notification Section  ===== -->
+    <!-- =====  Start Main Content Section  ===== -->
 
-    <div
-      class="mt-[85px] md:mt-[50px] ml-[25px] md:ml-[40px] mr-[25px] md:mr-[45px] flex-1 justify-between items-start main-content">
-      <div class="flex justify-between items-center notification-main">
-        <div class="flex gap-[20px] items-center">
-          <img src="assets/images/arrow-left.svg" class="cursor-pointer" alt="Left Arrow">
-          <p class="text-[30px] md:text-[25px] lg:text-[30px] font-[sf-semibold] text-[#3C3F88]">Live Scores</p>
-        </div>
-        <div class="flex gap-[20px]">
-          <img src="assets/images/search-icon.svg" class="cursor-pointer" alt="Search Icon">
-          <img src="assets/images/settings-icon.svg" class="cursor-pointer" alt="Settings Icon">
-          <img src="assets/images/notification-icon.svg" class="cursor-pointer" alt="Notification Icon">
-          <div class="h-[30px] w-[30px] rounded-[5px] bg-[#d9c8ff] overflow-hidden">
-            <label for="imagePick" class="block h-full w-full cursor-pointer">
-              <img src="assets/images/girl-4.svg" class="h-full w-auto object-cover cursor-pointer imgPickerDP"
-                alt="Girl Image">
-            </label>
-            <input type="file" id="imagePick" class="hidden imagePickerInput" accept="image/*">
+    <main class="mb-[25px]">
+
+      <div
+        class="mt-[85px] lg:mt-[50px] ml-[20px] md:ml-[30px] mr-[25px] md:mr-[45px] flex-1 justify-between items-start main-content">
+
+
+
+        <!-- =====  Start Notification Section  ===== -->
+
+        <div class="flex justify-between items-center ml-[5px] md:ml-[10px] notification-main">
+          <div class="flex gap-[20px] items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#3c3f88"
+              class="rotate-[-90deg] cursor-pointer">
+              <path
+                d="M456.12-172.08v-524.77l-68.2 68.89-34.03-33.85L480-787.92l126.11 126.11-33.84 33.85-68.19-68.89v524.77h-47.96Z" />
+            </svg>
+            <p class="text-[30px] md:text-[25px] lg:text-[30px] font-[sf-semibold] text-[#3C3F88]">Live Scores</p>
+          </div>
+          <div class="flex gap-[20px]">
+            <div class="flex items-center bg-white rounded-[10px] py-[6px] px-[15px] gap-[10px] activeSearch">
+              <input type="text" class="outline-0 text-[#BACCFD] text-[15px]" placeholder="Search here ...">
+              <img src="assets/images/search-icon.svg" class="cursor-pointer h-[24px] w-[24px]" alt="Search Icon">
+            </div>
+            <img src="assets/images/search-icon.svg" class="cursor-pointer searchImg" alt="Search Icon">
+            <img src="assets/images/settings-icon.svg" class="cursor-pointer" alt="Settings Icon">
+            <img src="assets/images/notification-icon.svg" class="cursor-pointer" alt="Notification Icon">
+            <div class="h-[30px] w-[30px] rounded-[5px] bg-[#d9c8ff] overflow-hidden">
+              <label for="imagePick" class="block h-full w-full cursor-pointer">
+                <img src="assets/images/girl-4.svg" class="h-full w-auto object-cover cursor-pointer imgPickerDP"
+                  alt="User Image">
+              </label>
+              <input type="file" id="imagePick" class="hidden imagePickerInput" accept="image/*">
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- =====  End Notification Section  ===== -->
+        <!-- =====  End Notification Section  ===== -->
+
+
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-[20px] mt-8">
+
+          <div class="col-span-2 space-y-6">
+
+
+
+            <!-- =====  Start Match Info Section  ===== -->
+
+            <div
+              class="pt-[20px] pl-[20px] pr-[25px] pb-[35px] bg-white shadow-[0px_15px_40px_0px_#DEDEDE1A] rounded-[30px]">
+
+              <div class="flex items-center sm:items-start justify-between mb-[22px]">
+                <p class="text-[15px] text-[#353E6C] sm:text-[20px] font-[sf-bold] tracking-[0.5px]">Your Next Match</p>
+                <div class="flex gap-[10px]">
+                  <p class="text-[#BACCFD] text-[12px] tracking-[0.5px]">18 January 2020</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px"
+                    fill="#BACCFD">
+                    <path
+                      d="M216-96q-29.7 0-50.85-21.5Q144-139 144-168v-528q0-29 21.15-50.5T216-768h72v-96h72v96h240v-96h72v96h72q29.7 0 50.85 21.5Q816-725 816-696v528q0 29-21.15 50.5T744-96H216Zm0-72h528v-360H216v360Zm0-432h528v-96H216v96Zm0 0v-96 96Zm264.21 216q-15.21 0-25.71-10.29t-10.5-25.5q0-15.21 10.29-25.71t25.5-10.5q15.21 0 25.71 10.29t10.5 25.5q0 15.21-10.29 25.71t-25.5 10.5Zm-156 0q-15.21 0-25.71-10.29t-10.5-25.5q0-15.21 10.29-25.71t25.5-10.5q15.21 0 25.71 10.29t10.5 25.5q0 15.21-10.29 25.71t-25.5 10.5Zm312 0q-15.21 0-25.71-10.29t-10.5-25.5q0-15.21 10.29-25.71t25.5-10.5q15.21 0 25.71 10.29t10.5 25.5q0 15.21-10.29 25.71t-25.5 10.5Zm-156 144q-15.21 0-25.71-10.29t-10.5-25.5q0-15.21 10.29-25.71t25.5-10.5q15.21 0 25.71 10.29t10.5 25.5q0 15.21-10.29 25.71t-25.5 10.5Zm-156 0q-15.21 0-25.71-10.29t-10.5-25.5q0-15.21 10.29-25.71t25.5-10.5q15.21 0 25.71 10.29t10.5 25.5q0 15.21-10.29 25.71t-25.5 10.5Zm312 0q-15.21 0-25.71-10.29t-10.5-25.5q0-15.21 10.29-25.71t25.5-10.5q15.21 0 25.71 10.29t10.5 25.5q0 15.21-10.29 25.71t-25.5 10.5Z" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="match-profile flex justify-evenly items-center">
+
+                <div class="match-inside-div">
+                  <div>
+                    <p class="text-[#121212] text-[25px] font-[sf-bold] tracking-[0.5px]">Naomi O.</p>
+                    <p class="text-[#BACCFD] text-[10px] font-[sf-light] tracking-[0.5px] mt-[5px]">Japan</p>
+                  </div>
+
+                  <div
+                    class="bg-[#F6D3DC] rounded-tl-[15px] rounded-br-[15px] rounded-tr-[5px] rounded-bl-[5px] w-[85px] h-[100px] flex items-end justify-center">
+                    <img src="assets/images/girl-1.svg" alt="Player Image">
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-center">
+                  <p class="text-[#1657FF] text-[35px] font-[sf-bold]">:</p>
+                </div>
+
+                <div class="match-inside-div">
+                  <div
+                    class="bg-[#FFE7C2] rounded-tl-[15px] rounded-br-[15px] rounded-tr-[5px] rounded-bl-[5px] w-[85px] h-[100px] flex items-end justify-end">
+                    <img src="assets/images/girl-2.svg" alt="Player Image">
+                  </div>
+
+                  <div>
+                    <p class="text-[#121212] text-[25px] font-[sf-bold] tracking-[0.5px]">Anindita R.</p>
+                    <p class="text-[#BACCFD] text-[10px] font-[sf-light] tracking-[0.5px] mt-[5px]">Indonesia</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- =====  End Match Info Section  ===== -->
+
+
+
+            <!-- =====  Start Statistic Section  ===== -->
+
+            <h3
+              class="text-[#353E6C] text-[25px] sm:text-[20px] tracking-[0.5px] font-[sf-bold] my-[25px] mt-[60px] sm:mt-0 text-center sm:text-left">
+              Statistic</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-[20px]">
+
+              <!-- Bar Chart -->
+              <div
+                class="bg-white shadow-[0px_15px_40px_0px_#DEDEDE1A] rounded-[30px] pt-[40px] px-[30px] xl:px-[15px] pb-[40px]">
+                <div class="flex items-center justify-between ">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+                    fill="#121212" class="rotate-[-90deg] cursor-pointer left-arrow">
+                    <path
+                      d="M456.12-172.08v-524.77l-68.2 68.89-34.03-33.85L480-787.92l126.11 126.11-33.84 33.85-68.19-68.89v524.77h-47.96Z" />
+                  </svg>
+
+                  <p class="text-[20px] text-[#121212] font-[sf-medium] tracking-[0.5px] showYear">2025</p>
+
+                  <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+                    fill="#121212" class="rotate-[90deg] cursor-pointer right-arrow">
+                    <path
+                      d="M456.12-172.08v-524.77l-68.2 68.89-34.03-33.85L480-787.92l126.11 126.11-33.84 33.85-68.19-68.89v524.77h-47.96Z" />
+                  </svg>
+                </div>
+
+                <div class="mt-[35px] flex justify-center">
+                  <canvas id="myChart" width="235" height="150"></canvas>
+                </div>
+              </div>
+
+
+              <!-- Pie Chart -->
+              <div
+                class="bg-white shadow-[0px_15px_40px_0px_#DEDEDE1A] rounded-[30px] pt-[25px] pb-[25px] flex flex-col items-center">
+                <div>
+                  <p class="text-[#121212] text-[20px] font-[sf-medium] text-center mb-[18px] tracking-[0.5px]">Global
+                    Statistic</p>
+                </div>
+
+                <div id="chartContainer">
+                  <div id="chartCenterTitle">
+                    23 Wins
+                  </div>
+                  <div id="chartCenterPercent">
+                    (75%)
+                  </div>
+                  <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="legend justify-center">
+                  <div class="legend-item">
+                    <div class="color-box" style="background: linear-gradient(to right, #A066FF, #6A6BFF);"></div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="color-box" style="background: linear-gradient(to right, #FFA9A5, #FF6363);"></div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="color-box" style="background: linear-gradient(to right, #FFD166, #FFA600);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- =====  End Statistic Section  ===== -->
+
+
+
+            <!-- =====  Start Ranking Section  ===== -->
+
+            <h3
+              class="text-[#353E6C] text-[25px] sm:text-[20px] tracking-[0.5px] font-[sf-bold] my-[25px] mt-[60px] sm:mt-0 text-center sm:text-left">
+              Rankings</h3>
+
+            <div class="gap-[20px] mb-[25px] flex flex-wrap justify-center sm:justify-start">
+
+              <div class="w-[180px] h-[90px] relative rounded-[20px] bg-[#F44771]">
+                <img src="assets/images/pink-bg.svg" alt="Abstract Image">
+                <div class="absolute top-[15px] left-[15px]">
+                  <p class="text-white text-[15px] font-[sf-medium] tracking-[1px]">Singles</p>
+                  <div class="flex gap-[10px] items-center mt-[5px]">
+                    <p class="text-white text-[25px] font-[sf-medium] tracking-[0.5px]">18</p>
+                    <img src="assets/images/up-icon.svg" class="h-[20px] w-[20px]" alt="Up Arrow">
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-[180px] h-[90px] relative rounded-[20px] bg-[#ff9a3e]">
+                <img src="assets/images/orange-bg.svg" alt="Abstract Image">
+                <div class="absolute top-[15px] left-[15px]">
+                  <p class="text-white text-[15px] font-[sf-medium] tracking-[1px]">Doubles</p>
+                  <div class="flex gap-[10px] items-center mt-[5px]">
+                    <p class="text-white text-[25px] font-[sf-medium] tracking-[0.5px]">20</p>
+                    <img src="assets/images/up-icon.svg" class="h-[20px] w-[20px]" alt="Up Arrow">
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-[180px] h-[90px] relative rounded-[20px] bg-[#332a7c]">
+                <img src="assets/images/purple-bg.svg" alt="Abstract Image">
+                <div class="absolute top-[15px] left-[15px]">
+                  <p class="text-white text-[15px] font-[sf-medium] tracking-[1px]">Mixed Doubles</p>
+                  <div class="flex gap-[10px] items-center mt-[5px]">
+                    <p class="text-white text-[25px] font-[sf-medium] tracking-[0.5px]">16</p>
+                    <img src="assets/images/down-icon.svg" class="h-[20px] w-[20px]" alt="Down Arrow">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- =====  End Ranking Section  ===== -->
+
+
+
+          </div>
+
+
+
+          <!-- =====  Start Player Profile Section  ===== -->
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 justify-between md:gap-[60px] xl:gap-0">
+
+            <div class="bg-white shadow-[0px_50px_80px_0px_#661EFF33] rounded-[30px] h-[480px] relative">
+
+              <img src="assets/images/abstract.svg" alt="Abstract Design"
+                class="absolute top-0 left-0 right-0 w-full rounded-tl-[30px] rounded-tr-[30px]" />
+
+              <img src="assets/images/Human.svg" alt="Girl Image" class="absolute top-[-40px] right-[-45px]">
+
+              <div class="absolute top-[20px] sm:top-[30px] xl:top-[20px] left-[15px]">
+                <p class="text-[25px] text-white font-[sf-bold] tracking-[0.5px]">Anindita <br> Rahmawati</p>
+
+                <div class="mt-[10px] flex gap-[10px]">
+                  <img src="assets/images/flag.svg" alt="Flag Icon" class="h-[24px] w-[24px]">
+                  <p class="text-[#fff] text-[15px] tracking-[0.5px] font-[sf-semibold]">Indonesia</p>
+                </div>
+
+              </div>
+
+              <div
+                class="absolute left-[15px] bottom-[40px] sm:bottom-[20px] items-baseline sm:flex sm:gap-[30px] md:gap-0 md:block">
+
+                <div
+                  class="flex sm:flex-col md:flex-row items-center gap-[30px] sm:gap-[0] md:gap-[30px] xl:gap-0 xl:block">
+                  <p class="text-[#000] text-[15px] tracking-[0.5px] font-[sf-semibold]">Biography</p>
+
+                  <div
+                    class="bg-[#ffc2f9] rounded-tl-[20px] rounded-br-[20px] rounded-tr-[10px] rounded-bl-[10px] w-[50px] h-[60px] flex justify-center items-end overflow-hidden mt-[8px] mb-[17px]">
+                    <img src="assets/images/girl-2.svg" alt="Girl Image" class="h-[55px] w-[40px]">
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-[10px] text-[#121212] text-[12px] tracking-[0.5px] font-[sf-semibold]">
+                  <p>Age : 27</p>
+                  <p>Birth : 24 - 02 - 1993</p>
+                  <p>Sex : Women</p>
+                  <p>WTA : 10.</p>
+                </div>
+
+                <div class="mt-[27px]">
+                  <p class="text-[#121212] text-[12px] tracking-[0.5px] font-[sf-semibold]">Social Media</p>
+                  <div class="text-[#BACCFD] flex gap-[10px] mt-[20px]">
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div
+              class="shadow-[0px_15px_40px_0px_#DEDEDE1A] mt-[30px] md:mt-0  bg-[#fff] rounded-[30px] p-[20px] h-fit">
+
+              <div class="flex justify-between">
+                <p class="text-[22px] xl:text-[20px] text-[#121212] font-[sf-medium] tracking-[0.5px]">Latest Scores</p>
+                <button
+                  class="text-[18px] xl:text-[15px] text-[#276BF0] font-[sf-semibold] tracking-[0.5px] cursor-pointer">View
+                  All</button>
+              </div>
+
+              <div>
+
+                <div x-data="{ tab: 'singles' }" class="mt-[20px] sm:mt-[15px]">
+
+                  <!-- Tabs -->
+                  <ul class="flex items-center">
+
+                    <li class="mr-4">
+                      <button @click="tab = 'singles'"
+                        :class="tab === 'singles' ? 'text-[#16DBCC] text-[15px] xl:text-[12px] tracking-[0.5px] bg-[#DCFAF8] rounded-[5px] font-[sf-medium]' : 'text-[#BACCFD] text-[15px] xl:text-[12px] tracking-[0.5px] rounded-[5px] font-[sf-regular]'"
+                        class="py-[3px] px-[6px]">
+                        Singles
+                      </button>
+                    </li>
+
+                    <li class="mr-4">
+                      <button @click="tab = 'doubles'"
+                        :class="tab === 'doubles' ? 'text-[#16DBCC] text-[15px] xl:text-[12px] tracking-[0.5px] bg-[#DCFAF8] rounded-[5px] font-[sf-medium]' : 'text-[#BACCFD] text-[15px] xl:text-[12px] tracking-[0.5px] rounded-[5px] font-[sf-regular]'"
+                        class="py-2 px-1">
+                        Doubles
+                      </button>
+                    </li>
+
+                    <li>
+                      <button @click="tab = 'mixed'"
+                        :class="tab === 'mixed' ? 'text-[#16DBCC] text-[15px] xl:text-[12px] tracking-[0.5px] bg-[#DCFAF8] rounded-[5px] font-[sf-medium]' : 'text-[#BACCFD] text-[15px] xl:text-[12px] tracking-[0.5px] rounded-[5px] font-[sf-regular]'"
+                        class="py-2 px-1">
+                        Mixed Doubles
+                      </button>
+                    </li>
+                  </ul>
+
+                  <!-- Tab Content -->
+                  <div>
+                    <div x-show="tab === 'singles'" class="mt-[15px]">
+
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-[10px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#F44771">
+                            <path
+                              d="M480-480q-60 0-102-42t-42-102q0-60 42-102t102-42q60 0 102 42t42 102q0 60-42 102t-102 42ZM192-192v-96q0-23 12.5-43.5T239-366q55-32 116.29-49 61.29-17 124.5-17t124.71 17Q666-398 721-366q22 13 34.5 34t12.5 44v96H192Zm72-72h432v-24q0-5.18-3.03-9.41-3.02-4.24-7.97-6.59-46-28-98-42t-107-14q-55 0-107 14t-98 42q-5 4-8 7.72-3 3.73-3 8.28v24Zm216.21-288Q510-552 531-573.21t21-51Q552-654 530.79-675t-51-21Q450-696 429-674.79t-21 51Q408-594 429.21-573t51 21Zm-.21-72Zm0 360Z" />
+                          </svg>
+                          <p class="text-[15px] xl:text-[12px] text-[#000]">WTA - SINGLES: Australia Open, hard</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                          fill="#FFA000">
+                          <path
+                            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+                        </svg>
+                      </div>
+
+                      <div class="mt-[25px]">
+                        <div class="flex items-center justify-between">
+                          <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">Anindita
+                            R. (IDN)</p>
+                          <div class="flex gap-[20px]">
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">2</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">6</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">6</p>
+                          </div>
+                          <span
+                            class="text-[15px] xl:text-[12px] bg-[#FFF5D9] py-[3px] px-[6px] rounded-[5px] text-[#FFBB38] font-[sf-semibold] tracking-[0.5px]">WIN</span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-[15px]">
+                          <p class="text-[15px] xl:text-[12px] text-[#000] tracking-[0.5px]">Naomi O. (JPN)</p>
+                          <div class="flex gap-[20px] ml-[10px]">
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">0</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">3</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">1</p>
+                          </div>
+                          <span
+                            class="text-[15px] xl:text-[12px] bg-[#FFF5D9] py-[3px] px-[6px] rounded-[5px] text-[#FFBB38] font-[sf-semibold] tracking-[0.5px] opacity-0">WIN</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div x-show="tab === 'doubles'" class="mt-[15px]">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-[10px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#F44771">
+                            <path
+                              d="M480-480q-60 0-102-42t-42-102q0-60 42-102t102-42q60 0 102 42t42 102q0 60-42 102t-102 42ZM192-192v-96q0-23 12.5-43.5T239-366q55-32 116.29-49 61.29-17 124.5-17t124.71 17Q666-398 721-366q22 13 34.5 34t12.5 44v96H192Zm72-72h432v-24q0-5.18-3.03-9.41-3.02-4.24-7.97-6.59-46-28-98-42t-107-14q-55 0-107 14t-98 42q-5 4-8 7.72-3 3.73-3 8.28v24Zm216.21-288Q510-552 531-573.21t21-51Q552-654 530.79-675t-51-21Q450-696 429-674.79t-21 51Q408-594 429.21-573t51 21Zm-.21-72Zm0 360Z" />
+                          </svg>
+                          <p class="text-[15px] xl:text-[12px] text-[#000]">WTA - DOUBLES: Australia, easy</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                          fill="#FFA000">
+                          <path
+                            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+                        </svg>
+                      </div>
+
+                      <div class="mt-[25px]">
+                        <div class="flex items-center justify-between">
+                          <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">Anindita
+                            R. (IDN)</p>
+                          <div class="flex gap-[20px]">
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">1</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">3</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">2</p>
+                          </div>
+                          <span
+                            class="text-[15px] xl:text-[12px] bg-[#FFF5D9] py-[3px] px-[6px] rounded-[5px] text-[#FFBB38] font-[sf-semibold] tracking-[0.5px] opacity-0">WIN</span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-[15px]">
+                          <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">Naomi O.
+                            (JPN)</p>
+                          <div class="flex gap-[20px] ml-[10px]">
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">4</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">6</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">5</p>
+                          </div>
+                          <span
+                            class="text-[15px] xl:text-[12px] bg-[#FFF5D9] py-[3px] px-[6px] rounded-[5px] text-[#FFBB38] font-[sf-semibold] tracking-[0.5px]">WIN</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div x-show="tab === 'mixed'" class="mt-[15px]">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-[10px]">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                            fill="#F44771">
+                            <path
+                              d="M480-480q-60 0-102-42t-42-102q0-60 42-102t102-42q60 0 102 42t42 102q0 60-42 102t-102 42ZM192-192v-96q0-23 12.5-43.5T239-366q55-32 116.29-49 61.29-17 124.5-17t124.71 17Q666-398 721-366q22 13 34.5 34t12.5 44v96H192Zm72-72h432v-24q0-5.18-3.03-9.41-3.02-4.24-7.97-6.59-46-28-98-42t-107-14q-55 0-107 14t-98 42q-5 4-8 7.72-3 3.73-3 8.28v24Zm216.21-288Q510-552 531-573.21t21-51Q552-654 530.79-675t-51-21Q450-696 429-674.79t-21 51Q408-594 429.21-573t51 21Zm-.21-72Zm0 360Z" />
+                          </svg>
+                          <p class="text-[15px] xl:text-[12px] text-[#000]">WTA - MIXED DOUBLES: Australia</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"
+                          fill="#FFA000">
+                          <path
+                            d="m352-293 128-76 129 76-34-144 111-95-147-13-59-137-59 137-147 13 112 95-34 144ZM243-144l63-266L96-589l276-24 108-251 108 252 276 23-210 179 63 266-237-141-237 141Zm237-333Z" />
+                        </svg>
+                      </div>
+
+                      <div class="mt-[25px]">
+                        <div class="flex items-center justify-between">
+                          <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">Anindita
+                            R. (IDN)</p>
+                          <div class="flex gap-[20px]">
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">2</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">6</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">6</p>
+                          </div>
+                          <span
+                            class="text-[15px] xl:text-[12px] bg-[#FFF5D9] py-[3px] px-[6px] rounded-[5px] text-[#FFBB38] font-[sf-semibold] tracking-[0.5px]">WIN</span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-[15px]">
+                          <p class="text-[15px] xl:text-[12px] text-[#000] tracking-[0.5px]">Naomi O. (JPN)</p>
+                          <div class="flex gap-[20px] ml-[10px]">
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-semibold] tracking-[0.5px]">0</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">3</p>
+                            <p class="text-[15px] xl:text-[12px] text-[#000] font-[sf-regular] tracking-[0.5px]">1</p>
+                          </div>
+                          <span class="opacity-0">WIN</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- =====  End Player Profile Section  ===== -->
+
+
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- =====  End Main Content Section  ===== -->
+
+
 
   </div>
-
 
 
 
