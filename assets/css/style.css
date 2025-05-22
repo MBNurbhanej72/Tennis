@@ -83,16 +83,44 @@ nav div {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.1s;
+  transition: all 0.3s;
   cursor: pointer;
   padding: 16px 0px 16px 18px;
+  position: relative;
+}
+
+nav div::after {
+  content: "";
+  transition: all 0.1s;
+  position: absolute;
+  top: 12px;
+  bottom: 0;
+  right: 0;
+  height: 30px;
+}
+
+nav div:hover::after {
+  border: 3px solid #1657FF;
+  box-shadow: -2px 0px 10px 2px #0037ff56;
+  border-radius: 50px;
 }
 
 .activeDiv {
-  border-right: 5px solid var(--nav-color);
   background-color: #E9EFFF;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+.activeDiv::after {
+  content: "";
+  border: 3px solid #1657FF;
+  position: absolute;
+  top: 12px;
+  bottom: 0;
+  right: 0;
+  height: 30px;
+  box-shadow: -2px 0px 10px 2px #0037ff56;
+  border-radius: 50px;
 }
 
 .activeDiv svg {
@@ -104,7 +132,7 @@ nav div {
 }
 
 nav div:hover {
-  border-right: 5px solid var(--nav-color);
+  /* border-right: 5px solid var(--nav-color); */
   background-color: #E9EFFF;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
